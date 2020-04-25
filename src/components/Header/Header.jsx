@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './Header.module.scss';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header className={css.header}>
             <img
