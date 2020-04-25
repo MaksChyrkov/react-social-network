@@ -2,13 +2,13 @@ import React from 'react';
 import css from './Navbar.module.scss';
 
 const Navbar = () => {
-    return(
+    return (
         <nav className={css.nav}>
             <div className={css.item}>
-                <a>Profile</a>
+                <a href="/profile">Profile</a>
             </div>
             <div className={css.item}>
-                <a>Messages</a>
+                <a href="/dialogs">Messages</a>
             </div>
             <div className={css.item}>
                 <a>News</a>
