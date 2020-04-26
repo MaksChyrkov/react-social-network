@@ -1,5 +1,5 @@
-import React from 'react';
-import css from './Settings.module.scss';
+import React from "react";
+import css from "./Settings.module.scss";
 
 const Settings = (props) => {
     return (
@@ -8,6 +8,5 @@ const Settings = (props) => {
         </div>
     );
 }
-
 
 export default Settings;

@@ -1,5 +1,5 @@
-import React from 'react';
-import css from './Music.module.scss';
+import React from "react";
+import css from "./Music.module.scss";
 
 const Music = (props) => {
     return (
@@ -8,6 +8,5 @@ const Music = (props) => {
         </div>
     );
 }
-
 
 export default Music;
