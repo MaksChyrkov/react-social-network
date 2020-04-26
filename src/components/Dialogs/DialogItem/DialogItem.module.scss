@@ -1,8 +1,10 @@
-.dialog a {
-  color: white;
-  text-decoration: none;
-}
+.dialog {
+  a {
+    color: white;
+    text-decoration: none;
+  }
 
-.dialog a.activeLink {
-  color: gold;
+  a.activeLink {
+    color: gold;
+  }
 }
