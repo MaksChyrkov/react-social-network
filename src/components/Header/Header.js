@@ -5,7 +5,7 @@ const Header = (props) => {
     return (
         <header className={css.header}>
             <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/512px-Microsoft_Edge_logo_%282019%29.svg.png"/>
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Inkscape.logo.svg/390px-Inkscape.logo.svg.png"/>
         </header>
     );
 }
