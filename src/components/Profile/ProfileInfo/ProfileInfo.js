@@ -1,3 +1,5 @@
+//File where component ProfileInfo is described
+
 import React from "react";
 import css from "./ProfileInfo.module.scss";
 

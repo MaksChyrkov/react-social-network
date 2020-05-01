@@ -1,3 +1,5 @@
+//File where component Post is described
+
 import React from "react";
 import css from "./Post.module.scss";
 

@@ -1,3 +1,5 @@
+//File where component Settings is described
+
 import React from "react";
 import css from "./Settings.module.scss";
 

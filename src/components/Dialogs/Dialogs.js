@@ -1,3 +1,5 @@
+//File where component Dialogs is described. In this component program does requests to send message and to change text in textarea
+
 import React from "react";
 import css from "./Dialogs.module.scss";
 import DialogItem from "./DialogItem/DialogItem";
@@ -6,14 +8,16 @@ import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../..
 
 const Dialogs = (props) => {
 
+    //create components with .map() with same code but different data
     let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
-
     let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message}/>);
 
+    //send a request to store to send message
     let onSendMessageClick = () => {
         props.dispatch(sendMessageActionCreator());
     }
 
+    //send a request to store to chane textarea value
     let onNewMessageChange = (e) => {
         let text = e.target.value;
         props.dispatch(updateNewMessageTextActionCreator(text));

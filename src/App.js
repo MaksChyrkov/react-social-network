@@ -1,3 +1,5 @@
+//File that renders Header, Navbar and allows to navigate between pages
+
 import React from "react";
 import {Route} from "react-router-dom";
 import "./App.scss";
@@ -17,7 +19,8 @@ const App = (props) => {
             <div className="app-wrapper-content">
                 <Route path="/profile"
                        render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}/>}/>
-                <Route path="/dialogs" render={() => <Dialogs dialogsPage={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
+                <Route path="/dialogs"
+                       render={() => <Dialogs dialogsPage={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
                 <Route path="/settings" render={() => <Settings/>}/>

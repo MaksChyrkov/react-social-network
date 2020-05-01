@@ -1,3 +1,5 @@
+//File where component News is described
+
 import React from "react";
 import css from "./News.module.scss";
 

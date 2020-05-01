@@ -1,3 +1,5 @@
+//File where component Header is described
+
 import React from "react";
 import css from "./Header.module.scss";
 

@@ -1,3 +1,5 @@
+//File in which component Navbar is described and NavLinks are used to change page URL
+
 import React from "react";
 import css from "./Navbar.module.scss";
 import {NavLink} from "react-router-dom";

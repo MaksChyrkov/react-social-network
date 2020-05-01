@@ -1,6 +1,10 @@
+//File in which general data is located
+
+//Import reducers
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 
+//Object store in which data is located
 let store = {
     _state: {
         profilePage: {
@@ -31,23 +35,27 @@ let store = {
         }
     },
 
+    //rerender entire tree
     _callSubscriber() {
 
     },
 
+    //get state
     getState() {
         return this._state;
     },
 
+    //assign a value to _callSubscriber(), which function to call
     subscribe(observer) {
         this._callSubscriber = observer;
     },
 
+    //call reducer functions with parameter action
     dispatch(action) {
-
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
+        //rerender entire tree with new state
         this._callSubscriber(this._state);
     }
 }

@@ -1,3 +1,5 @@
+//File where component Profile is described
+
 import React from "react";
 import css from "./Profile.module.scss";
 import MyPosts from "./MyPosts/MyPosts";
