@@ -7,13 +7,17 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import store from "./redux/redux-store";
+import {Provider} from "./StoreContext";
 
 //function to be called to rerender entire tree
 let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} store={store}/>
-        </BrowserRouter>, document.getElementById('root')
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </BrowserRouter>
+        , document.getElementById('root')
     );
 }
 
