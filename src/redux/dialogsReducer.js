@@ -4,8 +4,27 @@
 const SEND_MESSAGE = "SEND-MESSAGE";
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 
+//initialize state for the first iteration
+let initialState = {
+    dialogs: [
+        {id: 1, name: "Maks"},
+        {id: 2, name: "Ilya"},
+        {id: 3, name: "Dima"},
+        {id: 4, name: "Sasha"},
+        {id: 5, name: "Anton"},
+        {id: 6, name: "Kostya"}
+    ],
+
+        messages: [
+        {id: 1, message: "Hi!"},
+        {id: 2, message: "How are you?"},
+        {id: 3, message: "What a sunny weather"}
+    ],
+        newMessageText: ""
+}
+
 //function in which according to the incoming type program sends new message or updates text in textarea
-const dialogsReducer = (state, action) => {
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
             let newMessage = {

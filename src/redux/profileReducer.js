@@ -4,8 +4,18 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
+//initialize state for the first iteration
+let initialState = {
+    posts: [
+        {id: 1, message: "Hi, how are you?", likesCount: "15"},
+        {id: 2, message: "It`s my first post", likesCount: "10"},
+        {id: 3, message: "Hello react!", likesCount: "20"}
+    ],
+    newPostText: ""
+}
+
 //function in which according to the incoming type program adds new post or updates text in textarea
-const profileReducer = (state, action) => {
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
