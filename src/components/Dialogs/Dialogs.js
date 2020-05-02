@@ -1,26 +1,25 @@
-//File where component Dialogs is described. In this component program does requests to send message and to change text in textarea
+//File where component Dialogs is described. In this component program does requests to the container component and brings data there
 
 import React from "react";
 import css from "./Dialogs.module.scss";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogsReducer";
 
 const Dialogs = (props) => {
 
-    //create components with .map() with same code but different data
+    //create components with .map() with same data but different code
     let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
     let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message}/>);
 
-    //send a request to store to send message
+    //send a request to container component to send message
     let onSendMessageClick = () => {
-        props.dispatch(sendMessageActionCreator());
+        props.sendMessage();
     }
 
-    //send a request to store to chane textarea value
+    //send a request to container component to chane textarea value
     let onNewMessageChange = (e) => {
         let text = e.target.value;
-        props.dispatch(updateNewMessageTextActionCreator(text));
+        props.updateNewMessageText(text);
     }
 
     return (

@@ -1,24 +1,23 @@
-//File where component MyPosts is described. In this component program does requests to add post and to change text in textarea
+//File where component MyPosts is described. In this component program does requests to the container component and brings data there
 
 import React from "react";
 import css from "./MyPosts.module.scss";
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profileReducer.js";
 
 const MyPosts = (props) => {
 
-    //create component with .map() with same code but different data
-    let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
+    //create component with .map() with same data but different code
+    let postsElements = props.profilePage.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
 
-    //send a request to store to add post
+    //send a request to container component to add post
     let addPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.addPost();
     }
 
-    //send a request to store to chane textarea value
+    //send a request to container component to chane textarea value
     let onPostChange = (e) => {
         let text = e.target.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
     }
 
     return (
@@ -26,7 +25,8 @@ const MyPosts = (props) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea onChange={onPostChange} value={props.newPostText} placeholder="Enter your post..."/>
+                    <textarea onChange={onPostChange} value={props.profilePage.newPostText}
+                              placeholder="Enter your post..."/>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>
