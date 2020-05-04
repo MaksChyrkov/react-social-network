@@ -7,28 +7,17 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import store from "./redux/redux-store";
-import {Provider} from "./StoreContext";
+import {Provider} from "react-redux";
 
-//function to be called to rerender entire tree
-let rerenderEntireTree = (state) => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <App/>
-            </Provider>
-        </BrowserRouter>
-        , document.getElementById('root')
-    );
-}
-
-//render page when it loads for the first time
-rerenderEntireTree(store.getState());
-
-//rerender entire tree every time when state is changed
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state);
-});
+//render page when it loads
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </BrowserRouter>
+    , document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

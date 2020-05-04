@@ -7,7 +7,7 @@ import Post from "./Post/Post";
 const MyPosts = (props) => {
 
     //create component with .map() with same data but different code
-    let postsElements = props.profilePage.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
+    let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} key={p.id}/>);
 
     //send a request to container component to add post
     let addPost = () => {
@@ -25,7 +25,7 @@ const MyPosts = (props) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea onChange={onPostChange} value={props.profilePage.newPostText}
+                    <textarea onChange={onPostChange} value={props.newPostText}
                               placeholder="Enter your post..."/>
                 </div>
                 <div>

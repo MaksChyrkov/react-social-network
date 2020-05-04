@@ -8,8 +8,8 @@ import Message from "./Message/Message";
 const Dialogs = (props) => {
 
     //create components with .map() with same data but different code
-    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
-    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message}/>);
+    let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} key={d.id}/>);
+    let messagesElements = props.messages.map(m => <Message message={m.message} key={m.id}/>);
 
     //send a request to container component to send message
     let onSendMessageClick = () => {
@@ -30,7 +30,7 @@ const Dialogs = (props) => {
             <div className={css.messages}>
                 <div>{messagesElements}</div>
                 <div>
-                    <div><textarea onChange={onNewMessageChange} value={props.dialogsPage.newMessageText}
+                    <div><textarea onChange={onNewMessageChange} value={props.newMessageText}
                                    placeholder="Enter your message..."/></div>
                     <div>
                         <button onClick={onSendMessageClick}>Send</button>

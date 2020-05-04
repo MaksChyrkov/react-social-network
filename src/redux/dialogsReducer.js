@@ -9,34 +9,41 @@ let initialState = {
     dialogs: [
         {id: 1, name: "Maks"},
         {id: 2, name: "Ilya"},
-        {id: 3, name: "Dima"},
+        {id: 3, name: "Roma"},
         {id: 4, name: "Sasha"},
         {id: 5, name: "Anton"},
         {id: 6, name: "Kostya"}
     ],
 
-        messages: [
+    messages: [
         {id: 1, message: "Hi!"},
         {id: 2, message: "How are you?"},
         {id: 3, message: "What a sunny weather"}
     ],
-        newMessageText: ""
+    newMessageText: ""
 }
 
 //function in which according to the incoming type program sends new message or updates text in textarea
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SEND_MESSAGE:
+        case SEND_MESSAGE: {
             let newMessage = {
                 id: 4,
                 message: state.newMessageText
             };
-            state.messages.push(newMessage);
-            state.newMessageText = "";
-            return state;
-        case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newText;
-            return state;
+
+            return {
+                ...state,
+                messages: [...state.messages, newMessage],
+                newMessageText: ""
+            };
+        }
+        case UPDATE_NEW_MESSAGE_TEXT: {
+            return {
+                ...state,
+                newMessageText: action.newText
+            };
+        }
         default:
             return state;
     }

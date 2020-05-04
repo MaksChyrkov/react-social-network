@@ -1,36 +1,33 @@
 //File where container component around 'Dialogs' is created.
 //In this component program does requests to store to send message and to change text in textarea
-//It uses context to get 'store'
+//Used 'connect' to communicate between store and component
 
-import React from "react";
 import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogsReducer";
 import Dialogs from "./Dialogs";
-import StoreContext from "../../StoreContext";
+import {connect} from "react-redux";
 
-const DialogsContainer = (props) => {
-    return (
-        <StoreContext.Consumer>{
-            (store) => {
-                let dialogsPage = store.getState().dialogsPage;
-
-                //send a request to store to send message
-                let sendMessage = () => {
-                    store.dispatch(sendMessageActionCreator());
-                }
-
-                //send a request to store to chane textarea value
-                let updateNewMessageText = (text) => {
-                    store.dispatch(updateNewMessageTextActionCreator(text));
-                }
-
-                return (
-                    <Dialogs sendMessage={sendMessage} updateNewMessageText={updateNewMessageText}
-                             dialogsPage={dialogsPage}/>
-                )
-            }
-        }
-        </StoreContext.Consumer>
-    );
+//get dialogs, messages and newMessageText from state
+let MapStateToProps = (state) => {
+    return {
+        dialogs: state.dialogsPage.dialogs,
+        messages: state.dialogsPage.messages,
+        newMessageText: state.dialogsPage.newMessageText
+    }
 }
+
+//dispatch actions to store
+let MapDispatchToProps = (dispatch) => {
+    return {
+        sendMessage: () => {
+            dispatch(sendMessageActionCreator())
+        },
+        updateNewMessageText: (text) => {
+            dispatch(updateNewMessageTextActionCreator(text))
+        }
+    }
+}
+
+//providing connection between component and store
+const DialogsContainer = connect(MapStateToProps, MapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
