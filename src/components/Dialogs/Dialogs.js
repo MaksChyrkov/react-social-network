@@ -8,7 +8,7 @@ import Message from "./Message/Message";
 const Dialogs = (props) => {
 
     //create components with .map() with same data but different code
-    let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} key={d.id}/>);
+    let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
     let messagesElements = props.messages.map(m => <Message message={m.message} key={m.id}/>);
 
     //send a request to container component to send message
