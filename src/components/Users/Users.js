@@ -2,65 +2,25 @@
 
 import React from "react";
 import css from "./Users.module.scss";
+import * as axios from 'axios';
+import avatar from "../../assets/img/hotpng.com.png"
 
 const Users = (props) => {
 
     if (props.users.length === 0) {
-        props.setUsers([
-                {
-                    id: 1,
-                    name: "Maks",
-                    status: "I'm learning react!",
-                    location: {
-                        city: "Kyiv",
-                        country: "Ukraine"
-                    },
-                    isFollowed: true,
-                    imgUrl: "https://www.meme-arsenal.com/memes/bf0296e8bfa92558d0ca180289194068.jpg"
-                },
-                {
-                    id: 2,
-                    name: "Sasha",
-                    status: "I'm learning react too!",
-                    location: {
-                        city: "Minsk",
-                        country: "Belarus"
-                    },
-                    isFollowed: false,
-                    imgUrl: "https://www.meme-arsenal.com/memes/bf0296e8bfa92558d0ca180289194068.jpg"
-                }, {
-                    id: 3,
-                    name: "Roma",
-                    status: "I'm learning react too!",
-                    location: {
-                        city: "New York",
-                        country: "America"
-                    },
-                    isFollowed: true,
-                    imgUrl: "https://www.meme-arsenal.com/memes/bf0296e8bfa92558d0ca180289194068.jpg"
-                }, {
-                    id: 4,
-                    name: "Dema",
-                    status: "I'm learning react too!",
-                    location: {
-                        city: "Krakow",
-                        country: "Poland"
-                    },
-                    isFollowed: false,
-                    imgUrl: "https://www.meme-arsenal.com/memes/bf0296e8bfa92558d0ca180289194068.jpg"
-                }
-            ]
-        )
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            props.setUsers(response.data.items)
+        });
     }
 
     return (
         <div>
             {
                 props.users.map(u => <div className={css.usersPage} key={u.id}>
-                        <img src={u.imgUrl}/>
+                        <img src={u.imgUrl != null ? u.imgUrl : avatar}/>
                         <div>{u.name}</div>
-                        <div>{u.location.city}</div>
-                        <div>{u.location.country}</div>
+                        <div>{"u.location.city"}</div>
+                        <div>{"u.location.country"}</div>
                         <div>{u.status}</div>
                         <div>
                             {

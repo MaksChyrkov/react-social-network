@@ -11,7 +11,6 @@ let initialState = {
 
 //function in which according to the incoming type program follows or unfollows a user or sets users
 const usersReducer = (state = initialState, action) => {
-    debugger;
     switch (action.type) {
         case FOLLOW_TOGGLE:
             return {
